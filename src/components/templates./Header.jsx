@@ -4,7 +4,7 @@ import Logo from "@components/atoms/Logo";
 import HamburgerIcon from "@components/atoms/HamburgerIcon";
 import * as colors from "@styles/colors";
 import Wallet from "@components/atoms/Wallet";
-import KaiKas_image from "@assets/image/kaikas.png";
+import kaikasImageUrl from "@assets/image/kaikas.png";
 
 const Container = styled.header`
   width: 100%;
@@ -53,6 +53,11 @@ const SearchIconWrapper = styled.div`
   margin-left: 16px;
 `;
 
+const KaikasImage = styled.img`
+  width: 20px;
+  height: 20px;
+`;
+
 function Header() {
   return (
     <Container>
@@ -65,7 +70,7 @@ function Header() {
         </SearchIconWrapper>
       </SearchBarWrapper>
       <WalletBox>
-        <Wallet />
+        <KaikasImage src={kaikasImageUrl} />
       </WalletBox>
       <GrayRoundBox>
         <HamburgerIcon />

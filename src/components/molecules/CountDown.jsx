@@ -30,28 +30,22 @@ function formatCount(count) {
   return `${count}`;
 }
 
-export default function CountDown({targetDate}) {
+export default function CountDown({ targetDate }) {
   //month같은 경우에는 index이기때문에 11월 => 10으로 작성해주셔야 합니다.
-  const { days, hours, minutes, seconds } = useCountDown(targetDate);
-
-  return (
-    <CountDownWrapper>
+  const { days, hours, minutes, seconds, isClosed, isComingSoon } =
+    useCountDown(targetDate);
+  if (isComingSoon) {
+    return (
       <EachCountWrapper>
-        <CountText>{formatCount(days)}</CountText>
-        <UnitText>일</UnitText>
+        <CountText>Coming Soon!</CountText>
       </EachCountWrapper>
+    );
+  }
+  if (isClosed) {
+    return (
       <EachCountWrapper>
-        <CountText>{formatCount(hours)}</CountText>
-        <UnitText>시</UnitText>
+        <CountText>Closed...</CountText>
       </EachCountWrapper>
-      <EachCountWrapper>
-        <CountText>{formatCount(minutes)}</CountText>
-        <UnitText>분</UnitText>
-      </EachCountWrapper>
-      <EachCountWrapper>
-        <CountText>{formatCount(seconds)}</CountText>
-        <UnitText>초</UnitText>
-      </EachCountWrapper>
-    </CountDownWrapper>
-  );
-}
+    );
+  }
+};
